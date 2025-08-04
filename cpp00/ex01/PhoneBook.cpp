@@ -6,16 +6,16 @@
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 21:17:46 by duandrad          #+#    #+#             */
-/*   Updated: 2025/07/27 03:49:32 by duandrad         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:59:02 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <cstring>
-#include <cstdlib>
 
-std::string getValidInput(const std::string& fieldName) {
+std::string	getValidInput(const std::string& fieldName) {
+
 	std::string input;
+
 	std::cout << fieldName << ": ";
 	std::getline(std::cin, input);
 	while (input.empty()) {
@@ -25,8 +25,8 @@ std::string getValidInput(const std::string& fieldName) {
 	return input;
 }
 
-int	main(int ac, char **av)
-{
+int	main(int ac, char **av) {
+
 	PhoneBook pb;
 	Contact cont;
 	std::string name, surname, nickname, secret, prompt;
@@ -69,16 +69,11 @@ int	main(int ac, char **av)
 			if (number >= 0 && number < 9) {
 				pb.display(&pb, number);
 				std::cin.clear();
+				std::cin.ignore(10000, '\n');
 			}
 		}
 		else if (prompt == "EXIT")
 			break ;
-		else
-		{
-			std::cout << "Invalid input. Please choose:" << std::endl;
-			std::cout << "ADD, SEARCH or EXIT" << std::endl;
-			continue;
-		}
 	}
 	return 0;
 }

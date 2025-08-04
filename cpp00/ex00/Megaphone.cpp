@@ -17,6 +17,8 @@ char	*toUpperCase(char *str)
 
 int	main(int ac, char **av)
 {
+	char *uppercase;
+
 	if (ac < 2)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
@@ -24,7 +26,7 @@ int	main(int ac, char **av)
 	}
 	for (int i = 1; i < ac; ++i)
 	{
-		char *uppercase = toUpperCase(av[i]);
+		uppercase = toUpperCase(av[i]);
 		std::cout << uppercase;
 		delete[] uppercase;
 	}
