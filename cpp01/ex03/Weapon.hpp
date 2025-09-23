@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:39 by duandrad         ###   ########.fr       */
+/*   Created: 2025/08/25 11:32:38 by duandrad          #+#    #+#             */
+/*   Updated: 2025/08/25 14:23:17 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-#define PHONE_BOOK_H
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
-#include "Contact.hpp"
 #include <iostream>
-#include <iomanip>
 
-class PhoneBook {
-	Contact contacts[8];
-	int currentIndex;
+class Weapon {
+	
+	std::string type;
+
 	public:
-		PhoneBook() {
-			currentIndex = 0;
-		}
-		void add(Contact *cont);
-		void search();
-		void display(int index);
-		~PhoneBook(){
-			std::cout << "Exiting PhoneBook..." << std::endl;
-		}
+		std::string			getType();
+		void				setType(std::string type);
+	
+	Weapon() {
+		type = "";
+	}
+	Weapon(std::string _type) {
+		type = _type;
+	}
 };
 
 #endif

@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:39 by duandrad         ###   ########.fr       */
+/*   Created: 2025/08/06 16:14:16 by duandrad          #+#    #+#             */
+/*   Updated: 2025/08/06 17:49:16 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-#define PHONE_BOOK_H
+#include "Zombie.hpp"
 
-#include "Contact.hpp"
-#include <iostream>
-#include <iomanip>
+int main() {
+	Zombie *zombie;
 
-class PhoneBook {
-	Contact contacts[8];
-	int currentIndex;
-	public:
-		PhoneBook() {
-			currentIndex = 0;
-		}
-		void add(Contact *cont);
-		void search();
-		void display(int index);
-		~PhoneBook(){
-			std::cout << "Exiting PhoneBook..." << std::endl;
-		}
-};
-
-#endif
+	randomChump("randomchump");
+	zombie = newZombie("zombie1");
+	zombie->announce();
+	delete zombie;
+}

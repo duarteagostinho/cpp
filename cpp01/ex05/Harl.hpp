@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:39 by duandrad         ###   ########.fr       */
+/*   Created: 2025/08/25 21:30:35 by duandrad          #+#    #+#             */
+/*   Updated: 2025/08/26 16:37:23 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-#define PHONE_BOOK_H
+#ifndef HARL_HPP
+#define HARL_HPP
 
-#include "Contact.hpp"
 #include <iostream>
-#include <iomanip>
 
-class PhoneBook {
-	Contact contacts[8];
-	int currentIndex;
+class Harl {
+	
+	std::string _level;
+	
 	public:
-		PhoneBook() {
-			currentIndex = 0;
-		}
-		void add(Contact *cont);
-		void search();
-		void display(int index);
-		~PhoneBook(){
-			std::cout << "Exiting PhoneBook..." << std::endl;
-		}
+		void complain(std::string level);
+		void set_level(std::string level);
+		std::string get_level();
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
 };
+
+struct Level
+{
+	{"DEBUG", &Harl::}
+};
+
 
 #endif

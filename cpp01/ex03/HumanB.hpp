@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:39 by duandrad         ###   ########.fr       */
+/*   Created: 2025/08/25 11:44:15 by duandrad          #+#    #+#             */
+/*   Updated: 2025/08/25 14:36:03 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-#define PHONE_BOOK_H
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
-#include "Contact.hpp"
-#include <iostream>
-#include <iomanip>
+#include "Weapon.hpp"
 
-class PhoneBook {
-	Contact contacts[8];
-	int currentIndex;
+class HumanB {
+	
+	Weapon		*weapon;
+	std::string	name;
+
 	public:
-		PhoneBook() {
-			currentIndex = 0;
-		}
-		void add(Contact *cont);
-		void search();
-		void display(int index);
-		~PhoneBook(){
-			std::cout << "Exiting PhoneBook..." << std::endl;
-		}
+		void	attack();
+		void	setWeapon(Weapon &_weapon);
+	HumanB(std::string _name) {
+		name = _name;
+		weapon = nullptr;
+	}
+	~HumanB() {
+		std::cout << "HumanB has been destroyed" << std::endl;
+	}
 };
 
 #endif
