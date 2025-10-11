@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 21:30:37 by duandrad          #+#    #+#             */
-/*   Updated: 2025/09/24 13:01:17 by duandrad         ###   ########.fr       */
+/*   Created: 2025/10/10 18:16:02 by duandrad          #+#    #+#             */
+/*   Updated: 2025/10/11 11:57:33 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main(int ac, char **av) {
+int	main(int ac, char **av) {
 
 	Harl harl;
-	
+
 	if (ac == 2)
 		harl.complain(av[1]);
 	else

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 21:30:37 by duandrad          #+#    #+#             */
-/*   Updated: 2025/09/24 13:01:17 by duandrad         ###   ########.fr       */
+/*   Created: 2025/08/25 21:30:35 by duandrad          #+#    #+#             */
+/*   Updated: 2025/10/11 11:55:15 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int main(int ac, char **av) {
+#include <iostream>
 
-	Harl harl;
-	
-	if (ac == 2)
-		harl.complain(av[1]);
-	else
-		std::cout << "Invalid !" << std::endl;
-}
+class Harl {
+
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+	public:
+		void complain(std::string level);
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 21:30:35 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/26 16:37:23 by duandrad         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:58:44 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,14 @@
 #include <iostream>
 
 class Harl {
-	
-	std::string _level;
-	
-	public:
-		void complain(std::string level);
-		void set_level(std::string level);
-		std::string get_level();
+
 	private:
 		void debug(void);
 		void info(void);
 		void warning(void);
 		void error(void);
+	public:
+		void complain(std::string level);
 };
-
-struct Level
-{
-	{"DEBUG", &Harl::}
-};
-
 
 #endif

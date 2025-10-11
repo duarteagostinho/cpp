@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
@@ -11,16 +11,6 @@
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-void Harl::set_level(std::string level) {
-	
-	_level = level;
-}
-
-std::string Harl::get_level() {
-	
-	return _level;
-}
 
 void Harl::debug(void) {
 	
@@ -42,10 +32,18 @@ void Harl::error(void) {
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void	Harl::complain(std::string level) {
+void Harl::complain(std::string level) {
 
-	
-	level = _level;
-	
-	
+	void(Harl::*funcs[4])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+	};
+	std::string complainLevel[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	for (int i = 0; i < 4; i++) {
+		if (level == complainLevel[i])
+			return (this->*funcs[i])();
+	}
+
 }
