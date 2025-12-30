@@ -1,4 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: duandrad <duandrad@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 21:18:11 by duandrad          #+#    #+#             */
+/*   Updated: 2025/07/22 21:18:11 by duandrad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
+#include <cstring>
+#include <cctype>
+
+char	*toUpperCase(char *str)
+{
+	size_t len = strlen(str);
+	char *result = new char[len + 1];
+
+	for (size_t i = 0; i < len; ++i)
+	{
+		result[i] = toupper(str[i]);
+	}
+	result[len] = '\0';
+	return result;
+}
 
 int	main(int ac, char **av)
 {
@@ -7,11 +34,11 @@ int	main(int ac, char **av)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
-	for (int j = 1; av[j]; j++)
+	for (int i = 1; i < ac; ++i)
 	{
-		for (int i = 0; av[j][i]; i++) 
-			std::cout << static_cast <char>(std::toupper(av[j][i]));
-		std::cout << ' ';
+		char *uppercase = toUpperCase(av[i]);
+		std::cout << uppercase;
+		delete[] uppercase;
 	}
 	std::cout << std::endl;
 	return 0;
