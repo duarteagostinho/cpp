@@ -6,7 +6,7 @@
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:10:21 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/25 11:23:46 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:14:21 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main() {
 	std::string *stringPTR = &string;
 	std::string	&stringREF = string;
 
-	std::cout << "Adresses: " << std::endl;
+	std::cout << "Addresses: " << std::endl;
 	std::cout << &string << std::endl;
 	std::cout << stringPTR << std::endl;
 	std::cout << &stringREF << std::endl;

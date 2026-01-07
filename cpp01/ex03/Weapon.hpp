@@ -16,11 +16,12 @@
 #include <iostream>
 
 class Weapon {
-	
-	std::string type;
+
+	private:
+		std::string type;
 
 	public:
-		std::string			getType();
+		const std::string			&getType() const;
 		void				setType(std::string type);
 	
 	Weapon() {

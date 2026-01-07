@@ -25,7 +25,7 @@ class HumanB {
 		void	setWeapon(Weapon &_weapon);
 	HumanB(std::string _name) {
 		name = _name;
-		weapon = nullptr;
+		weapon = 0;
 	}
 	~HumanB() {
 		std::cout << "HumanB has been destroyed" << std::endl;

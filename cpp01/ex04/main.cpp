@@ -21,8 +21,7 @@ int	main(int ac, char **av) {
 	std::string		new_line;
 	if (ac != 4) {
 		
-		std::cout << "Invalid number of arguments" << std::endl;
-		std::cout << "Usage: ./sedIsForLosers <filename> <string1> <string2>" << std::endl;
+		std::cerr << "Invalid number of arguments" << std::endl;
 		return 1;
 	}
 	infile.open(av[1]);

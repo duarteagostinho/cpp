@@ -16,15 +16,18 @@
 #include <iostream>
 
 class Zombie {
-	std::string name;
+	private:
+		std::string name;
 	public:
-	void		setName(std::string Name);
-	std::string getName();
-	void		announce();
-	~Zombie() {
-		std::cout << name << " has been destroyed" << std::endl;
-	}
+		void		setName(std::string Name);
+		std::string getName();
+		void		announce();
+		~Zombie() {
+			std::cout << name << " has been destroyed" << std::endl;
+		}
 };
+
 Zombie		*newZombie(std::string Name);
 void		randomChump(std::string Name);
-#endif //ZOMBIE_HPP
+#endif
+
