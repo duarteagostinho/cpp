@@ -6,7 +6,7 @@
 /*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:00:05 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/06 17:20:41 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:04:35 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Zombie {
 		void		setName(std::string Name);
 		std::string getName();
 		void		announce();
+		Zombie() {}
 		~Zombie() {
 			std::cout << name << " has been destroyed" << std::endl;
 		}
