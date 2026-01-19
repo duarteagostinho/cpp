@@ -1,16 +1,16 @@
-NAME = unnecessaryViolence
-SRC = $(wildcard *.cpp)
+NAME = fixed
+SRC = Fixed.cpp main.cpp
 OBJS = $(SRC:.cpp=.o)
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
+	@c++ $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "COMPILATION SUCCESSFULL"
 
 %.o:%.cpp
-	@c++ $(CPPFLAGS) -c -g $< -o $@
+	@c++ $(FLAGS) -c -g $< -o $@
 
 clean:
 	@rm -rf $(OBJS)
@@ -21,3 +21,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

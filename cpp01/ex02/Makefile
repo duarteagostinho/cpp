@@ -1,16 +1,16 @@
 NAME = hiThisIsBrain
 SRC = main.cpp
 OBJS = $(SRC:.cpp=.o)
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@c++ $(FLAGS) $(OBJS) -o $(NAME)
+	@c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
 	@echo "COMPILATION SUCCESSFULL"
 
 %.o:%.cpp
-	@c++ $(FLAGS) -c -g $< -o $@
+	@c++ $(CPPFLAGS) -c -g $< -o $@
 
 clean:
 	@rm -rf $(OBJS)
