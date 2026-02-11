@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:00:05 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/25 10:43:58 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:35:35 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ class Zombie {
 		void		setName(std::string Name);
 		std::string getName();
 		void		announce();
-	Zombie() {}
-	~Zombie() {
-		std::cout << name << " has been destroyed" << std::endl;
-	}
+	Zombie();
+	~Zombie();
 };
 
 Zombie* zombieHorde(int N, std::string name);

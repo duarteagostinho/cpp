@@ -6,14 +6,13 @@
 /*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:13:10 by duandrad          #+#    #+#             */
-/*   Updated: 2026/01/15 11:31:26 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:25:25 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 #define CONTACT_H
 
-#include "PhoneBook.hpp"
 #include <iostream>
 
 class Contact {
@@ -22,16 +21,11 @@ class Contact {
 	std::string			Surname;
 	std::string			Nickname;
 	std::string			Secret;
-	std::string				Number;
+	std::string			Number;
 	
 	public:
-			Contact() {
-						Name = "";
-						Surname = "";
-						Nickname = "";
-						Secret = "";
-						Number = "";
-			}
+			Contact();
+			~Contact();
 			void		set_name(std::string name);
 			void		set_surname(std::string surname);
 			void		set_nick(std::string nick);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:37:33 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/25 12:48:09 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:37:23 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ class HumanA {
 	
 	public:
 		HumanA(std::string _name, Weapon &_weapon) : weapon(_weapon), name(_name) {}
+		~HumanA();
 		void	attack();
-		~HumanA() {
-			std::cout << "HumanA has been destroyed" << std::endl;
-		}
 };
 
 #endif

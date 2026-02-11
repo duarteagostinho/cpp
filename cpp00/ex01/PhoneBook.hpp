@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:39 by duandrad         ###   ########.fr       */
+/*   Created: 2026/02/11 16:21:29 by duandrad          #+#    #+#             */
+/*   Updated: 2026/02/11 16:26:48 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-#define PHONE_BOOK_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include "Contact.hpp"
-#include <iostream>
-#include <iomanip>
+# include "Contact.hpp"
+# include <iostream>
+# include <iomanip>
 
 class PhoneBook {
 	Contact contacts[8];
-	int currentIndex;
+	int 	currentIndex;
 	public:
-		PhoneBook() {
-			currentIndex = 0;
-		}
+		PhoneBook();
+		~PhoneBook();
 		void add(Contact *cont);
 		void search();
 		void display(int index);
-		~PhoneBook(){
-			std::cout << "Exiting PhoneBook..." << std::endl;
-		}
 };
+std::string	getValidInput(const std::string& fieldName);
 
 #endif

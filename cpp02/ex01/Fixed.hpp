@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 13:56:18 by duandrad          #+#    #+#             */
-/*   Updated: 2025/12/22 18:35:39 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:03:23 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 
@@ -22,27 +23,18 @@ class Fixed {
 		static const int	fract_bits = 8;
 
 	public:
-		Fixed() {
-			std::cout << "Default constructor called" << std::endl;
-			this->value = 0;
-		}
-		Fixed(const Fixed& obj) {
-			std::cout << "Copy constructor called" << std::endl;
-			this->value = obj.value;
-		}
-		Fixed &operator=(const Fixed &obj) {
-			std::cout << "Copy assignment operator called" << std::endl;
-			if (this != &obj)
-				this->value = obj.value;
-			return *this;
-		}
-		Fixed 
-		~Fixed() {
-			std::cout << "Destructor called" << std::endl;
-		}
+		Fixed();
+		Fixed(const int integer);
+		Fixed(const float flow);
+		Fixed(const Fixed& obj);
+		Fixed &operator=(const Fixed &obj);
+		~Fixed();
+		float	toFloat(void) const;
+		int		toInt(void) const;
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-
 };
+
+std::ostream&	operator<<(std::ostream &out, const Fixed &fix);
 
 #endif
