@@ -6,7 +6,7 @@
 /*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 17:49:34 by duandrad          #+#    #+#             */
-/*   Updated: 2026/02/11 17:06:39 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/03/03 17:10:12 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,69 @@ std::ostream	&operator<<(std::ostream &out, const Fixed &fix) {
 
 	out << fix.toFloat();
 	return out;
+}
+
+bool	Fixed::operator>(Fixed &ref)
+{
+	return (this->value > ref.value);
+}
+
+bool	Fixed::operator<(Fixed &ref)
+{
+	return (this->value < ref.value);
+}
+
+bool	Fixed::operator>=(Fixed &ref)
+{
+	return (this->value >= ref.value);
+}
+
+bool	Fixed::operator<=(Fixed &ref)
+{
+	return (this->value <= ref.value);
+}
+
+bool	Fixed::operator==(Fixed &ref)
+{
+	return (this->value == ref.value);
+}
+
+bool	Fixed::operator!=(Fixed &ref)
+{
+	return (this->value != ref.value);
+}
+
+Fixed	Fixed::operator+(Fixed &ref)
+{
+	return (Fixed(this->toFloat() + ref.toFloat()));
+}
+
+Fixed	Fixed::operator-(Fixed &ref)
+{
+	return (Fixed(this->toFloat() - ref.toFloat()));
+}
+
+Fixed	Fixed::operator*(Fixed &ref)
+{
+	return (Fixed(this->toFloat() * ref.toFloat()));
+}
+
+Fixed	Fixed::operator+(Fixed &ref)
+{
+	return (Fixed(this->toFloat() / ref.toFloat()));
+}
+
+Fixed	Fixed::operator++(int nb)
+{
+	return (Fixed(nb++));
+}
+
+Fixed	Fixed::operator--(int nb)
+{
+	return (Fixed(nb--));
+}
+
+Fixed	&Fixed::operator++(void)
+{
+	return ();
 }
