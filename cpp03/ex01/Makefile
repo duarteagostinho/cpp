@@ -1,5 +1,5 @@
-NAME = fixed
-SRC = Fixed.cpp main.cpp
+NAME = ScavTrap
+SRC = ScavTrap.cpp ClapTrap.cpp main.cpp
 OBJS = $(SRC:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
