@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:10:51 by duandrad          #+#    #+#             */
-/*   Updated: 2026/02/11 16:14:21 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/03/25 14:05:30 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int ac, char **av) {
 		{
 			pb.search();
 			std::cin >> index;
-			if (index >= 0 && index < 9) {
+			if (index >= 0 && index < 8) {
 				pb.display(index);
 				std::cin.clear();
 				std::cin.ignore(10000, '\n');

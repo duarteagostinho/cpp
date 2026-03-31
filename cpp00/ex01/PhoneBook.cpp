@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 21:17:29 by duandrad          #+#    #+#             */
-/*   Updated: 2026/02/11 16:27:44 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/03/25 14:09:24 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ PhoneBook::~PhoneBook()
 void PhoneBook::add(Contact *cont){
 	if (currentIndex >= 8)
 		currentIndex = 8;
-	contacts[currentIndex] = *cont;
+	contacts[currentIndex % 8] = *cont;
 	currentIndex++;
 }
 
