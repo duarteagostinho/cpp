@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duandrad <duandrad@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duandrad <duandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:10:51 by duandrad          #+#    #+#             */
-/*   Updated: 2026/03/25 14:05:30 by duandrad         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:29:32 by duandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av) {
 				std::cin.ignore(10000, '\n');
 			}
 			else {
-				std::cout << "Invalid number, please select an index from 0 to 9" << std::endl;
+				std::cout << "Invalid number, please select an index from 0 to 7" << std::endl;
 				std::cin.clear();
 				std::cin.ignore(1000, '\n');
 			}
