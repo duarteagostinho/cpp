@@ -3,7 +3,7 @@
 
 int main()
 {
-	std::cout << "--------------- TEST 0 --------------" << std::endl;
+	std::cout << std::endl << "TEST 0:" << std::endl << std::endl;
 	Animal *animal_farm[100];
 	
 	for (int i = 0; i < 50; i++)
@@ -13,12 +13,12 @@ int main()
 	for (int k = 0; k < 100; k++)
 		delete animal_farm[k];
 
-	std::cout << "--------------- TEST 1 --------------" << std::endl;
+	std::cout << std::endl << "TEST 1:" << std::endl << std::endl;
 
 	Dog original;
 	Dog copy(original);
 
-	std::cout << "--------------- TEST 2 --------------" << std::endl;
+	std::cout << std::endl << "TEST 2:" << std::endl << std::endl;
 
 	Dog a;
 	Dog b;

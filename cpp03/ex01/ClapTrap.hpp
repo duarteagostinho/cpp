@@ -8,10 +8,10 @@ class ClapTrap
 {
 	protected:
 
-		std::string 	Name;
-		unsigned int	HitPoints;
-		unsigned int	EnergyPoints;
-		unsigned int	AttackDmg;
+		std::string 	name;
+		unsigned int	hitPoints;
+		unsigned int	energyPoints;
+		unsigned int	attackDmg;
 
 	public:
 
@@ -22,13 +22,13 @@ class ClapTrap
 		ClapTrap &operator=(ClapTrap const &rhs);
 		~ClapTrap();
 
-		void 		attack(const std::string& target);
-		void 		takeDamage(unsigned int amount);
-		void 		beRepaired(unsigned int amount);
-		std::string getName(void);
-		int			getHitPoints(void);
-		int			getEnergyPoints(void);
-		int			getAttackDmg(void);
+		void 			attack(const std::string& target);
+		void 			takeDamage(unsigned int amount);
+		void 			beRepaired(unsigned int amount);
+		std::string 	getName(void);
+		unsigned int	getHitPoints(void);
+		unsigned int	getEnergyPoints(void);
+		unsigned int	getAttackDmg(void);
 };
 
 #endif /* ******************************************************** CLAPTRAP_H */

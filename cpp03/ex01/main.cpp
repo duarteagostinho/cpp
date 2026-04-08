@@ -3,11 +3,18 @@
 
 int main()
 {
-	ClapTrap cT("Clappy");
-	ScavTrap sT("Scav");
+	ScavTrap a("Scav1");
+	ScavTrap b(a);
+	ScavTrap c("Scav2");
 
-	cT.attack("training dummy");
-	sT.attack("training dummy");
-	sT.guardGate();
+	a.attack("enemy");
+	a.takeDamage(30);
+	a.beRepaired(20);
+	a.guardGate();
+
+	c = a;
+	c.attack("target");
+	c.guardGate();
+
 	return 0;
 }

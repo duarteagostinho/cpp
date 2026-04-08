@@ -7,17 +7,17 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "ScavTrap Default Constructor has been called" << std::endl;
-	this->HitPoints = 100;
-	this->EnergyPoints = 50;
-	this->AttackDmg = 20;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDmg = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap Constructor has been called" << std::endl;
-	this->HitPoints = 100;
-	this->EnergyPoints = 50;
-	this->AttackDmg = 20;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDmg = 20;
 }
 
 ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src)
@@ -54,17 +54,17 @@ ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->EnergyPoints < 1)
+	if (this->energyPoints < 1)
 	{
 		std::cout << "Insufficient energy points! " << getEnergyPoints() << " currently available." << std::endl;
 		return ;
 	}
-	if (this->HitPoints < 1)
+	if (this->hitPoints < 1)
 	{
 		std::cout << "Insufficient hit points! " << getHitPoints() << " currently available." << std::endl;
 		return ;
 	}
-	this->EnergyPoints -= 1;
+	this->energyPoints -= 1;
 	std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << getAttackDmg() << " points of damage!" << std::endl;
 	std::cout << "ScavTrap " << getName() << " has " << getEnergyPoints() << " energy points remaining!" << std::endl;
 }

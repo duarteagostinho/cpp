@@ -2,26 +2,25 @@
 
 int main()
 {
-	ClapTrap ct("BOBBY");
+	ClapTrap a("Bob");
+	ClapTrap b("Alice");
 
-	// Initial state
-	std::cout << ct.getName() << " has " << ct.getHitPoints() << " hit points and "
-		<< ct.getEnergyPoints() << " energy points" << std::endl;
+	a.attack("target");
+	b.takeDamage(5);
+	b.beRepaired(3);
 
-	// Attacks using energy points
-	ct.attack("training_dummy");
-	ct.attack("target_dummy");
+	ClapTrap c(a);
+	c.attack("enemy");
 
-	// Take some damage
-	ct.takeDamage(3);
+	ClapTrap d("Dave");
+	d = b;
+	d.attack("monster");
 
-	// Repair until energy runs out (more than 10 times)
-	for (int i = 0; i < 12; i++)
-		ct.beRepaired(1);
+	for (int i = 0; i < 11; i++)
+		a.attack("dummy");
 
-	// Make ClapTrap reach 0 hit points, then try actions
-	ct.takeDamage(100);
-	ct.attack("after_death_dummy");
-	ct.beRepaired(1);
+	a.takeDamage(100);
+	a.attack("ghost");
+
 	return 0;
 }

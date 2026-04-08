@@ -4,14 +4,22 @@
 
 int main()
 {
-	ClapTrap cT("Clappy");
-	ScavTrap sT("Scav");
-	FragTrap fT("Frag");
+	FragTrap a("Frag1");
+	FragTrap b(a);
+	ScavTrap c("Scav1");
 
-	fT.attack("training dummy");
-	cT.attack("training dummy");
-	sT.attack("training dummy");
-	sT.guardGate();
-	fT.highFivesGuys();
+	a.attack("enemy");
+	a.takeDamage(40);
+	a.beRepaired(20);
+	a.highFivesGuys();
+
+	c.attack("target");
+	c.guardGate();
+
+	FragTrap d("Frag2");
+	d = a;
+	d.attack("monster");
+	d.highFivesGuys();
+
 	return 0;
 }

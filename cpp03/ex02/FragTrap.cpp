@@ -7,17 +7,17 @@
 FragTrap::FragTrap() : ClapTrap()
 {
 	std::cout << "FragTrap Default Constructor has been called" << std::endl;
-	this->HitPoints = 100;
-	this->EnergyPoints = 100;
-	this->AttackDmg = 30;
+	this->hitPoints = 100;
+	this->energyPoints = 100;
+	this->attackDmg = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "FragTrap Constructor has been called" << std::endl;
-	this->HitPoints = 100;
-	this->EnergyPoints = 100;
-	this->AttackDmg = 30;
+	this->hitPoints = 100;
+	this->energyPoints = 100;
+	this->attackDmg = 30;
 }
 
 FragTrap::FragTrap( const FragTrap & src ) : ClapTrap(src)
@@ -57,19 +57,19 @@ FragTrap &				FragTrap::operator=( FragTrap const & rhs )
 
 void	FragTrap::attack(const std::string &target)
 {
-	if (this->EnergyPoints < 1)
+	if (this->energyPoints < 1)
 	{
 		std::cout << "Insufficient energy points! " << getEnergyPoints() 
 										<< " currently available." << std::endl;
 		return ;
 	}
-	if (this->HitPoints < 1)
+	if (this->hitPoints < 1)
 	{
 		std::cout << "Insufficient hit points! " << getHitPoints()
 										<< " currently available." << std::endl;
 		return ;
 	}
-	this->EnergyPoints -= 1;
+	this->energyPoints -= 1;
 	std::cout << "FragTrap " << getName() << " attacks " << target 
 		<< ", causing " << getAttackDmg() << " points of damage!" << std::endl;
 	std::cout << "FragTrap " << getName() << " has " << getEnergyPoints()
