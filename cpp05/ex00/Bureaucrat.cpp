@@ -9,10 +9,16 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 	std::cout << "Default constructor has been called" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const std::string &Name, int Grade)
+	: _name(Name),
+	 _grade(Grade)
+{
+	std::cout << "Bureaucrat constructor has been called" << std::endl;
+}
+
 Bureaucrat::Bureaucrat( const Bureaucrat & src )
 {
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -20,8 +26,8 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src )
 
 Bureaucrat::~Bureaucrat()
 {
+	std::cout << "Bureaucrat destructor has been called." << std::endl;
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -38,7 +44,7 @@ Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 {
-	//o << "Value = " << i.getValue();
+	o << i.getGrade();
 	return o;
 }
 
@@ -47,10 +53,37 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	Bureaucrat::incrementGrade()
+{
+
+	this->_grade -= 1;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	this->_grade += 1;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const noexcept
+{
+
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+
+std::string	Bureaucrat::getName() 
+{
+	return (this->_name);
+}
+
+int Bureaucrat::getGrade()
+{
+	return (this->_grade);
+}
+
+
 
 
 /* ************************************************************************** */
