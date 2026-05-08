@@ -1,4 +1,5 @@
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
+# include "Form.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -78,6 +79,22 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "Grade too low!";
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (GradeTooHighException &e)
+	{
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+	catch (GradeTooLowException &e)
+	{
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 /*

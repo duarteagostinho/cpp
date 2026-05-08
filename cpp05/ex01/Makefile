@@ -1,5 +1,5 @@
-NAME = Bureaucrat
-SRC = Bureaucrat.cpp main.cpp
+NAME = Form
+SRC = Bureaucrat.cpp Form.cpp main.cpp
 OBJS = $(SRC:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
@@ -19,5 +19,8 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+run:
+	@./$(NAME)
 
 .PHONY: all clean fclean re
