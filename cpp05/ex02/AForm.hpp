@@ -22,9 +22,13 @@ class AForm {
 	};
     
         // Constructors & Destructor
-        AForm();                                  // Default
-        AForm(const std::string Name, int toSign, int toExecute);
-        AForm(const AForm &src);   		         // Copy
+        AForm(std::string name, bool signed_, int toSign, int toExecute) :  // Default Constructor     
+			_name(name), 
+			_signed(signed_),
+			_toSign(toSign),
+			_toExecute(toExecute){};
+        AForm(const std::string Name, int toSign, int toExecute); // Constructor
+        AForm(const AForm &src);   		         // Copy constructor
         ~AForm();                                 // Destructor
 
         // Operators
@@ -33,6 +37,9 @@ class AForm {
         // Methods
         void	beSigned(Bureaucrat &bc);
         const std::string	getName() const;
+		void	set_toSign(const int grade);
+		void	set_toExecute(int grade);
+		void	set_Name(std::string name);
 
    	private:
 		const std::string	_name;

@@ -1,53 +1,51 @@
-#include "Form.hpp"
-#include <string>
+# include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
 */
 
-Form::Form() : _name("Default"), _signed(false), _toSign(150), _toExecute(150)
+AForm::AForm(std::string name, bool signed_, int toSign, int toExecute) : _name("Default"), _signed(false), _toSign(150), _toExecute(150)
 {
-	// std::cout << "Form Default Constructor called" << std::endl;
+	std::cout << "AForm Default Constructor called" << std::endl;
 }
 
-Form::Form(const std::string name, int toSign, int toExecute) : _name(name),
+AForm::AForm(const std::string name, int toSign, int toExecute) : _name(name),
 	_signed(false), _toSign(toSign), _toExecute(toExecute)
 {
 	if (toSign < 1 || toExecute < 1)
 		throw GradeTooHighException();
 	else if (toSign > 150 || toExecute > 150)
 		throw GradeTooLowException();
-	// std::cout << "Form Constructor called" << std::endl;
+	std::cout << "AForm Constructor called" << std::endl;
 }
 
-Form::Form(const Form &src) : _name(src._name), _signed(false),
+AForm::AForm(const AForm &src) : _name(src._name), _signed(false),
 	_toSign(src._toSign), _toExecute(src._toExecute){
-    // std::cout << "Copy Constructor called" << std::endl;
-    *this = src;
+    std::cout << "AForm Copy Constructor called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {
-    // std::cout << "Destructor called" << std::endl;
+AForm::~AForm() {
+    std::cout << "Destructor called" << std::endl;
 }
 
 /*
 ** --------------------------------- OVERLOADS ---------------------------------
 */
 
-Form &Form::operator=(const Form &src) {
+AForm &AForm::operator=(const AForm &src) {
     if (this != &src) {
         // Copy attributes here
     }
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, const Form &i) {
-    (void)i; // Evita erro de 'unused parameter' até adicionares lógica
-    o << "Type: Form";
+std::ostream &operator<<(std::ostream &o, const AForm &i) {
+    (void)i;
+    o << "Type: AForm";
     return o;
 }
 
@@ -55,17 +53,17 @@ std::ostream &operator<<(std::ostream &o, const Form &i) {
 ** --------------------------------- METHODS ----------------------------------
 */
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high.";
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade is too low.";
 }
 
-void	Form::beSigned(Bureaucrat &bc)
+void	AForm::beSigned(Bureaucrat &bc)
 {
 	if (bc.getGrade() < _toSign)
 		throw GradeTooHighException();
@@ -78,7 +76,7 @@ void	Form::beSigned(Bureaucrat &bc)
 	}
 }
 
-const std::string	Form::getName() const
+const std::string	AForm::getName() const
 {
 	return (this->_name);
 }
