@@ -3,7 +3,7 @@
 
 # include <iostream>
 # include <string>
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -43,7 +43,7 @@ class Bureaucrat
 		void						decrementGrade();
 		void						GradeTooHigh();
 		void						GradeTooLow();
-		void						signForm(Form &form);
+		void						signForm(AForm &form);
 		
 };
 

@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTORS --------------------------------
 */
 
-AForm::AForm(std::string name, bool signed_, int toSign, int toExecute) : _name("Default"), _signed(false), _toSign(150), _toExecute(150)
+AForm::AForm() : _name("Default"), _signed(false), _toSign(150), _toExecute(150)
 {
 	std::cout << "AForm Default Constructor called" << std::endl;
 }

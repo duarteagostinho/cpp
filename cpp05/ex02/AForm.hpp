@@ -22,11 +22,7 @@ class AForm {
 	};
     
         // Constructors & Destructor
-        AForm(std::string name, bool signed_, int toSign, int toExecute) :  // Default Constructor     
-			_name(name), 
-			_signed(signed_),
-			_toSign(toSign),
-			_toExecute(toExecute){};
+        AForm();
         AForm(const std::string Name, int toSign, int toExecute); // Constructor
         AForm(const AForm &src);   		         // Copy constructor
         ~AForm();                                 // Destructor

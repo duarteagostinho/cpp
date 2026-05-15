@@ -1,5 +1,5 @@
 # include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -81,7 +81,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade too low!";
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	try
 	{

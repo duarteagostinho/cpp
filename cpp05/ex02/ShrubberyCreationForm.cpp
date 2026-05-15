@@ -1,18 +1,23 @@
-#include "ShrubberyCreationForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "AForm.hpp"
+# include <fstream>
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyForm", false, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Target) : AForm("ShrubberyCreationForm", 145, 137)
 {
-	std::cout << "ShrubberyCreationForm default constructor" << std::endl;
+	std::cout << "ShrubberyCreationForm constructor" << std::endl;
+	this->target = Target;
 }
 
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) : AForm(src)
 {
 	std::cout << "ShrubberyCreationForm copy constructor" << std::endl;
+	this->target = src.target;
 }
 
 
@@ -22,6 +27,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src 
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+	std::cout << "ShrubberyCreationForm destructor" << std::endl;
 }
 
 
@@ -31,24 +37,30 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	if (this != &rhs)
+	{
+		AForm::operator=(rhs);
+		this->target = rhs.target;
+	}
 	return *this;
 }
-
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
-{
-	//o << "Value = " << i.getValue();
-	return o;
-}
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	ShrubberyCreationForm::createFile()
+{
+	std::ofstream	file(target + "_shrubbery");
+
+	if (!file)
+		std::cerr << "Cannot create " << target << "_shrubbery" << std::endl;
+	file << "    *            *\n";
+    file << "   ***          ***\n";
+    file << "  *****        *****\n";
+    file << " *******      *******\n";
+    file << "   |||          |||\n";
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
