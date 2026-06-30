@@ -36,7 +36,7 @@ class AForm {
 		void	set_toSign(const int grade);
 		void	set_toExecute(int grade);
 		void	set_Name(std::string name);
-
+		void	execute(Bureaucrat const & executor) const;
    	private:
 		const std::string	_name;
 		bool				_signed;

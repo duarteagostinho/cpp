@@ -1,5 +1,5 @@
-#include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include "../inc/AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
@@ -7,12 +7,10 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string Target) : AForm("RobotomyRequestForm", 72, 45), target(Target) 
 {
-    std::cout << "RobotomyRequestForm Constructor called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm(src), target(src.target)
 {
-    std::cout << "Copy Constructor called" << std::endl;
     *this = src;
 }
 
@@ -20,8 +18,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::~RobotomyRequestForm() {
-    std::cout << "Destructor called" << std::endl;
+RobotomyRequestForm::~RobotomyRequestForm()
+{
 }
 
 /*
@@ -41,5 +39,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 
 void	RobotomyRequestForm::robotomize()
 {
+	std::cout << "** Drill noises **\n" << this->target << " you have been robotomized\n";
 	
 }

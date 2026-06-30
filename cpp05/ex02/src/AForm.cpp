@@ -1,4 +1,4 @@
-# include "AForm.hpp"
+# include "../inc/AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
@@ -6,7 +6,6 @@
 
 AForm::AForm() : _name("Default"), _signed(false), _toSign(150), _toExecute(150)
 {
-	std::cout << "AForm Default Constructor called" << std::endl;
 }
 
 AForm::AForm(const std::string name, int toSign, int toExecute) : _name(name),
@@ -16,20 +15,18 @@ AForm::AForm(const std::string name, int toSign, int toExecute) : _name(name),
 		throw GradeTooHighException();
 	else if (toSign > 150 || toExecute > 150)
 		throw GradeTooLowException();
-	std::cout << "AForm Constructor called" << std::endl;
 }
 
 AForm::AForm(const AForm &src) : _name(src._name), _signed(false),
 	_toSign(src._toSign), _toExecute(src._toExecute){
-    std::cout << "AForm Copy Constructor called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-AForm::~AForm() {
-    std::cout << "Destructor called" << std::endl;
+AForm::~AForm() 
+{
 }
 
 /*

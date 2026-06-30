@@ -1,7 +1,7 @@
-# include "ShrubberyCreationForm.hpp"
-# include "AForm.hpp"
+# include "../inc/ShrubberyCreationForm.hpp"
+# include "../inc/AForm.hpp"
 # include <fstream>
-#include <iostream>
+# include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -9,14 +9,12 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string Target) : AForm("ShrubberyCreationForm", 145, 137)
 {
-	std::cout << "ShrubberyCreationForm constructor" << std::endl;
 	this->target = Target;
 }
 
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) : AForm(src)
 {
-	std::cout << "ShrubberyCreationForm copy constructor" << std::endl;
 	this->target = src.target;
 }
 
@@ -27,7 +25,6 @@ ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src 
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm destructor" << std::endl;
 }
 
 
@@ -53,13 +50,16 @@ void	ShrubberyCreationForm::createFile()
 {
 	std::ofstream	file(target + "_shrubbery");
 
-	if (!file)
+	if (!file) {
 		std::cerr << "Cannot create " << target << "_shrubbery" << std::endl;
+		return;
+	}
 	file << "    *            *\n";
     file << "   ***          ***\n";
     file << "  *****        *****\n";
     file << " *******      *******\n";
     file << "   |||          |||\n";
+	std::cout << "File: " << target << "_shrubbery" << " has been created\n"; 
 }
 
 /*

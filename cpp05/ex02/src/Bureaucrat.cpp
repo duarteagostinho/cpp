@@ -1,5 +1,5 @@
-# include "Bureaucrat.hpp"
-# include "AForm.hpp"
+# include "../inc/Bureaucrat.hpp"
+# include "../inc/AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------

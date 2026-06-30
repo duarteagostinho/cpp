@@ -1,7 +1,8 @@
 NAME = AForm
-SRC = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp main.cpp
+SRC = src/Bureaucrat.cpp src/AForm.cpp src/ShrubberyCreationForm.cpp src/RobotomyRequestForm.cpp src/PresidentialPardonForm.cpp main.cpp
+INCLDIRS = inc
 OBJS = $(SRC:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinc/
 
 all: $(NAME)
 
@@ -14,7 +15,6 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS)
-	@rm *_shrubbery
 
 fclean: clean
 	@rm -rf $(NAME)
