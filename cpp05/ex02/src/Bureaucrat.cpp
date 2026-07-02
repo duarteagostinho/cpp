@@ -1,5 +1,7 @@
 # include "../inc/Bureaucrat.hpp"
 # include "../inc/AForm.hpp"
+#include <exception>
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -87,13 +89,32 @@ void	Bureaucrat::signForm(AForm &form)
 	{
 		form.beSigned(*this);
 	}
-	catch (GradeTooHighException &e)
+	catch (AForm::GradeTooHighException &e)
 	{
 		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	}
-	catch (GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
 		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << '\n';
+	}
+	catch (AForm::FormNotSignedException const &e)
+	{
+		std::cout << _name << " couldn't execute " << form.getName() \
+			<< " because " << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooLowException const &e)
+	{
+		std::cout << _name << " couldn't execute " << form.getName() \
+			<< " because " << e.what() << std::endl;
 	}
 }
 

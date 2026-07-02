@@ -15,8 +15,8 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
-		void	createFile();
-		
+		void	createFile() const;
+		void	action() const;
 };
 
 #endif /* ******************************************* SHRUBBERYCREATIONFORM_H */

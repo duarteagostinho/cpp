@@ -43,9 +43,12 @@ std::ostream &operator<<(std::ostream &o, const PresidentialPardonForm &i) {
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	PresidentialPardonForm::pardon()
+void	PresidentialPardonForm::pardon() const
 {
 	std::cout << target << " has been pardoned by Zaphod Beeblebrox\n";
 }
 
-// Add methods here...
+void	PresidentialPardonForm::action() const
+{
+	pardon();
+}

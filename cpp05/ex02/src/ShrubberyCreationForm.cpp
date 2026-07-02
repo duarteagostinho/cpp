@@ -46,7 +46,7 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	ShrubberyCreationForm::createFile()
+void	ShrubberyCreationForm::createFile() const
 {
 	std::ofstream	file(target + "_shrubbery");
 
@@ -62,9 +62,9 @@ void	ShrubberyCreationForm::createFile()
 	std::cout << "File: " << target << "_shrubbery" << " has been created\n"; 
 }
 
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
+void	ShrubberyCreationForm::action() const
+{
+	createFile();
+}
 
 /* ************************************************************************** */

@@ -1,5 +1,6 @@
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/AForm.hpp"
+#include <cstdlib>
 
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
@@ -37,8 +38,16 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	RobotomyRequestForm::robotomize()
+void	RobotomyRequestForm::robotomize() const
 {
-	std::cout << "** Drill noises **\n" << this->target << " you have been robotomized\n";
-	
+	std::cout << this->target << " you have been robotomized\n";	
+}
+
+void	RobotomyRequestForm::action() const
+{
+	std::cout << "** Drill noises **\n";
+	if(std::rand() % 2 == 0)
+		robotomize();
+	else
+		std::cout << "Failed to robotomize\n";
 }

@@ -18,8 +18,8 @@ class RobotomyRequestForm : public AForm
 
         // Operators
         RobotomyRequestForm &operator=(const RobotomyRequestForm &src); // Copy Assignment
-        void	robotomize();
-
+        void	robotomize() const;
+		void	action() const;
     private:
         // Attributes go here
 };

@@ -44,6 +44,7 @@ class Bureaucrat
 		void						GradeTooHigh();
 		void						GradeTooLow();
 		void						signForm(AForm &form);
+		void						executeForm(AForm const &form);
 		
 };
 

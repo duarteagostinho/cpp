@@ -5,7 +5,7 @@
 # include <string>
 # include "AForm.hpp"
 
-class PresidentialPardonForm : AForm
+class PresidentialPardonForm : public AForm
 {
     public:
 	
@@ -19,7 +19,8 @@ class PresidentialPardonForm : AForm
         PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
 
 		// Methods
-		void	pardon();
+		void	pardon() const;
+		void	action() const;
 
     private:
         // Attributes go here

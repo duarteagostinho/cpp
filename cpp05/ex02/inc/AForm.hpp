@@ -1,6 +1,7 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+#include <exception>
 # include <iostream>
 #include <string>
 # include "Bureaucrat.hpp"
@@ -8,6 +9,11 @@
 class AForm {
     public:
 
+	class FormNotSignedException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
     class GradeTooHighException : public std::exception
 	{
 		public:
@@ -37,6 +43,7 @@ class AForm {
 		void	set_toExecute(int grade);
 		void	set_Name(std::string name);
 		void	execute(Bureaucrat const & executor) const;
+		virtual  void	action() const = 0;
    	private:
 		const std::string	_name;
 		bool				_signed;

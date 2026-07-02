@@ -1,4 +1,6 @@
 # include "../inc/AForm.hpp"
+#include <exception>
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
@@ -50,6 +52,11 @@ std::ostream &operator<<(std::ostream &o, const AForm &i) {
 ** --------------------------------- METHODS ----------------------------------
 */
 
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed.";
+}
+
 const char *AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high.";
@@ -62,18 +69,32 @@ const char *AForm::GradeTooLowException::what() const throw()
 
 void	AForm::beSigned(Bureaucrat &bc)
 {
-	if (bc.getGrade() < _toSign)
-		throw GradeTooHighException();
-	else if (bc.getGrade() > _toSign)
-		throw GradeTooLowException();
-	else
+	if (bc.getGrade() <= _toSign)
 	{
-		std::cout << bc.getName() << " signed " << getName() << std::endl;
+		std::cout << bc.getName() << " signed " << getName() << '\n';
 		_signed = true;
 	}
+	else {
+		throw GradeTooLowException();
+	}
 }
-
 const std::string	AForm::getName() const
 {
 	return (this->_name);
+}
+
+void	AForm::execute(Bureaucrat const &executor) const
+{
+	if (_signed == true)
+	{
+		if (executor.getGrade() <= _toExecute)
+			action();
+		else
+			throw GradeTooLowException();
+	}
+	else throw FormNotSignedException();
+}
+
+void	AForm::action() const
+{
 }
