@@ -3,6 +3,7 @@
 #include "../inc/B.hpp"
 #include "../inc/C.hpp"
 #include <cstdlib>
+#include <iostream>
 /*
 ** ------------------------------- CONSTRUCTORS --------------------------------
 */

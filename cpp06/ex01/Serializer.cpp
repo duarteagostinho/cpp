@@ -33,12 +33,6 @@ Serializer &Serializer::operator=(const Serializer &src) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, const Serializer &i) {
-    (void)i; // Evita erro de 'unused parameter' até adicionares lógica
-    o << "Type: Serializer";
-    return o;
-}
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

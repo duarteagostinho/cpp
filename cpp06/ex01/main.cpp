@@ -9,13 +9,14 @@ int	main() {
 	data.age = 10;
 	data.name = "Jon";
 
-	uintptr_t	raw = Serializer::serialize(&data);
-	std::cout << "Serialized: " << raw << std::endl;
+	uintptr_t raw = Serializer::serialize(&data);
 
-	Serializer::Data*	deserialized = Serializer::deserialize(raw);
-	std::cout << "Deserialized: " << deserialized << "\nNAME = " << deserialized->name << "\nAGE = " << deserialized->age << "\n";
+	Serializer::Data* deserialized = Serializer::deserialize(raw);
 
-	std::cout << "Serialized = " << raw << "\nDeserialized = " << deserialized << std::endl;
+	std::cout << "NAME = " << deserialized->name << "\nAGE = " << deserialized->age << std::endl;
 
-
+	if (deserialized == &data)
+		std::cout << "Pointers match!" << std::endl;
+	else
+		std::cout << "Pointers do not match!" << std::endl;
 }
