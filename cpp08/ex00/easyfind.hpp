@@ -7,10 +7,11 @@
 
 template<typename T>
 typename T::iterator	easyfind(T &container, int occ) {
-	return (std::find(std::begin(container), std::end(container), occ));
+	typename T::iterator it = std::find(container.begin(), container.end(), occ);
+	if (it != container.end())
+		return it;
+	else
+		throw std::out_of_range("Element not found");
 }
 
-
-
-
-#endif // !EASYFIND_HPP
+#endif
