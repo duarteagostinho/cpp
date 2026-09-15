@@ -24,7 +24,7 @@ int main()
 	std::cout << "\nINVALID GRADE TO SIGN:" << std::endl;
 	try 
 	{
-		Bureaucrat	bc("Boris", 150);
+		Bureaucrat	bc("Boris", 120);
 		Form		textForm("Form", 100, 100);
 		textForm.beSigned(bc);
 		std::cout << bc << std::endl;
