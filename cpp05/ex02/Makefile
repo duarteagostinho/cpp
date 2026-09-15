@@ -2,7 +2,7 @@ NAME = AForm
 SRC = src/Bureaucrat.cpp src/AForm.cpp src/ShrubberyCreationForm.cpp src/RobotomyRequestForm.cpp src/PresidentialPardonForm.cpp main.cpp
 INCLDIRS = inc
 OBJS = $(SRC:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinc/
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc/
 
 all: $(NAME)
 

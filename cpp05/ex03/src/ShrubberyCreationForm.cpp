@@ -48,7 +48,7 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 
 void	ShrubberyCreationForm::createFile() const
 {
-	std::ofstream	file(target + "_shrubbery");
+	std::ofstream	file((target + "_shrubbery").c_str());
 
 	if (!file) {
 		std::cerr << "Cannot create " << target << "_shrubbery" << std::endl;

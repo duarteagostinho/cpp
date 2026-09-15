@@ -1,10 +1,11 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include <exception>
+# include <exception>
 # include <iostream>
-#include <string>
+# include <string>
 # include "Bureaucrat.hpp"
+# include <cstdlib>
 
 class AForm {
     public:
