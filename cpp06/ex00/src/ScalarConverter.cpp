@@ -66,7 +66,7 @@ static bool	isInt(std::string const string) {
 		if (std::isalpha(string[i]))
 			return false;
 	}
-	long num = std::strtol(string.c_str(), nullptr, 10);
+	long num = std::strtol(string.c_str(), NULL, 10);
 	if (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
 		return false;
 	return true;
@@ -121,7 +121,7 @@ void	ScalarConverter::convert(std::string const string) {
 		std::cout << std::endl;
 	}
 	else if (isInt(string) == true) {
-		long l = std::strtol(string.c_str(), nullptr, 10);
+		long l = std::strtol(string.c_str(), NULL, 10);
 		if (l >= 32 && l <= 126)
 			std::cout << "char: '" << static_cast<char>(l) << "'" << std::endl;
 		else if (l >= 0 && l <= 255)
@@ -139,7 +139,7 @@ void	ScalarConverter::convert(std::string const string) {
 		std::cout << std::endl;
 	}
 	else if (isFloat(string) == true) {
-		float f = std::strtof(string.c_str(), nullptr);
+		float f = std::strtof(string.c_str(), NULL);
 		if (f >= 32 && f <= 126 && isWhole(f))
 			std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 		else if (f >= 0 && f <= 255 && isWhole(f))
@@ -162,7 +162,7 @@ void	ScalarConverter::convert(std::string const string) {
 		std::cout << std::endl;
 	}
 	else if (isDouble(string) == true) {
-		double d = std::strtod(string.c_str(), nullptr);
+		double d = std::strtod(string.c_str(), NULL);
 		if (d >= 32 && d <= 126 && isWhole(d))
 			std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 		else if (d >= 0 && d <= 255 && isWhole(d))
