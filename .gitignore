@@ -1,1 +1,24 @@
 *.o
+# 42 compiled binaries - NAME from Makefiles
+megaphone
+PhoneBook
+moarBrainz
+fixed
+Polymorphism
+Brain
+Abstraction
+Span
+btc
+RPN
+PmergeMe
+Serializer
+AForm
+Bureaucrat
+# generic: executables with no extension + shrubbery output
+*_shrubbery
+*_ShRubbery
+*_SHRUBBERY
+*_shrubbery
+# macOS / editor
+.DS_Store
+*.dSYM/
