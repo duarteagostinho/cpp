@@ -4,6 +4,7 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 
 /*
@@ -15,8 +16,7 @@ BitcoinExchange::BitcoinExchange() {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src) {
-    // std::cout << "Copy Constructor called" << std::endl;
-    *this = src;
+		   *this = src;
 }
 
 /*
@@ -33,7 +33,8 @@ BitcoinExchange::~BitcoinExchange() {
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src) {
     if (this != &src) {
-        // Copy attributes here
+		this->_db = src._db;
+		this->_inputFile = src._inputFile;
     }
     return *this;
 }
@@ -66,17 +67,16 @@ bool	BitcoinExchange::validDate(std::string date) {
 	if (date.empty() || date.size() != 10)
 		return false;
 
-	std::cout << "date before validation = " << date << std::endl;
 	int year = std::atoi(date.substr(0, 4).c_str());
+	if (year < 2009 || year > 2026)
+
 	int month = std::atoi(date.substr(5, 2).c_str());
 	int day = std::atoi(date.substr(8, 2).c_str());
-	std::cout << "day after atoi = " << day << std::endl;
 	int	dayscount[] = {31, 28 + isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (isLeap(year) == true) {
 		if (day >= 1 && day <= dayscount[month - 1])
 			return true;
 	} 
-	std::cout << "year = " << year << ", month = " << month << " day = " << day << std::endl;
 	if (year < 2009 || (month > 12 || month < 1) || (day > 31 || day < 1))
 		return false;
 	return true;
@@ -91,20 +91,19 @@ void	BitcoinExchange::createDB(std::string file) {
 		return ;
 	
 	std::ifstream	stream(file);
-	if (!stream) {
-		std::cerr << "Couldn't open file\n";
-		return;
-	}
-
+	if (!stream)
+		throw std::runtime_error("Error: could not open file\n");
 	std::string		line;
 	std::string		date;
 	float			rate;
 	size_t			div;
 
 	while (std::getline(stream, line)) {
-		if (line.empty())
+		if (line.empty() || line == "date,exchange_rate")
 			continue;
 		div = line.find(',');
+		if (div == std::string::npos)
+			continue;
 		date = line.substr(0, div);
 		rate = std::atof(line.substr(div + 1, line.npos).c_str());
 		_db[date] = rate;

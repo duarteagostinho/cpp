@@ -2,11 +2,18 @@
 #include <iostream>
 
 int main(int ac, char **av) {
-	if (ac != 2)
-		std::cerr << "Invalid number of arguments\n";
+	if (ac != 2) {
+		std::cerr << "Error: could not open file.\n";
+		return 1;
+	}
 	BitcoinExchange btc;
 
-	btc.createDB("data.csv");
-	btc.parseFile(av[1]);
-	btc.printBitcoin();
+	try {
+		btc.createDB("data.csv");
+		btc.parseFile(av[1]);
+		btc.printBitcoin();
+	}
+	catch (...) {
+	}
+	return 0;
 }
