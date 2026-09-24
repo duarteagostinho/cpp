@@ -1,16 +1,17 @@
 NAME = btc
 SRC = main.cpp BitcoinExchange.cpp
 OBJS = $(SRC:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinc/
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@c++ $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo "COMPILATION SUCCESSFULL"
 
 %.o:%.cpp
-	@c++ $(CXXFLAGS) -c -g $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJS)

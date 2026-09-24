@@ -8,8 +8,10 @@
 class BitcoinExchange {
 	
 	private:
-		std::map<std::string, float>	_db;
-		std::map<std::string, float>	_inputFile;
+		std::map<std::string, double>	_db;
+
+		bool	findRate(const std::string &date, double &rate);
+		void	processLine(const std::string &line);
 
 	public:
         // Constructors & Destructor
@@ -24,7 +26,6 @@ class BitcoinExchange {
 		void	printDatabase();
 		bool	validDate(std::string date);
 		void	parseFile(std::string file);
-		void	printBitcoin();
 };
 
 // Stream Operator Overload

@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <cctype>
 #include <cstddef>
 #include <cstdlib>
 #include <fstream>
@@ -32,10 +33,8 @@ BitcoinExchange::~BitcoinExchange() {
 */
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src) {
-    if (this != &src) {
+    if (this != &src)
 		this->_db = src._db;
-		this->_inputFile = src._inputFile;
-    }
     return *this;
 }
 
@@ -50,7 +49,7 @@ std::ostream &operator<<(std::ostream &o, const BitcoinExchange &i) {
 */
 
 void	BitcoinExchange::printDatabase() {
-	std::map<std::string, float>::iterator it;
+	std::map<std::string, double>::iterator it;
 
 	it = _db.begin();
 	while (it != _db.end()) {
@@ -64,38 +63,66 @@ bool isLeap(int year) {
 }
 
 bool	BitcoinExchange::validDate(std::string date) {
-	if (date.empty() || date.size() != 10)
+	if (date.size() != 10)
 		return false;
-
-	int year = std::atoi(date.substr(0, 4).c_str());
-	if (year < 2009 || year > 2026)
-
-	int month = std::atoi(date.substr(5, 2).c_str());
-	int day = std::atoi(date.substr(8, 2).c_str());
-	int	dayscount[] = {31, 28 + isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	if (isLeap(year) == true) {
-		if (day >= 1 && day <= dayscount[month - 1])
-			return true;
-	} 
-	if (year < 2009 || (month > 12 || month < 1) || (day > 31 || day < 1))
+	if (date[4] != '-' || date[7] != '-')
+		return false;
+	for (int i = 0; i < 10; i++) {
+		if (i == 4 || i == 7)
+			continue;
+		if (!std::isdigit(date[i]))
+			return false;
+	}
+	int y = std::atoi(date.substr(0, 4).c_str());
+	int m = atoi(date.substr(5,2).c_str());
+	int d = atoi(date.substr(8, 2).c_str());
+	if (m < 1 || m > 12)
+		return false;
+	int daysInM[] = {31, 28 + isLeap(y), 31,30,31,30,31,31,30,31,30,31};
+	if (d < 1 || d > daysInM[m - 1])
 		return false;
 	return true;
 }
 
-// bool	validValue(float val) {
-//
-// }
-//
+static std::string strSplit(const std::string &s) {
+	size_t start = 0;
+	while (start < s.size() && (s[start] == ' ' || s[start] == '\t'
+		|| s[start] == '\r' || s[start] == '\n'))
+		start++;
+	size_t end = s.size();
+	while (end > start && (s[end - 1] == ' ' || s[end - 1] == '\t'
+		|| s[end - 1] == '\r' || s[end - 1] == '\n'))
+		end--;
+	return s.substr(start, end - start);
+}
+
+static void printBadInput(const std::string &s) {
+	std::cout << "Error: bad input => " << s << std::endl;
+}
+
+static bool parseValue(const std::string &s, double &out) {
+	if (s.empty())
+		return false;
+	char *end = NULL;
+	double v = std::strtod(s.c_str(), &end);
+	if (end == s.c_str())
+		return false;
+	if (*end != '\0')
+		return false;
+	out = v;
+	return true;
+}
+
 void	BitcoinExchange::createDB(std::string file) {
 	if (file.empty())
-		return ;
+		throw std::runtime_error("Error: could not open file.");
 	
-	std::ifstream	stream(file);
+	std::ifstream	stream(file.c_str());
 	if (!stream)
-		throw std::runtime_error("Error: could not open file\n");
+		throw std::runtime_error("Error: could not open file.");
 	std::string		line;
 	std::string		date;
-	float			rate;
+	double			rate;
 	size_t			div;
 
 	while (std::getline(stream, line)) {
@@ -104,43 +131,82 @@ void	BitcoinExchange::createDB(std::string file) {
 		div = line.find(',');
 		if (div == std::string::npos)
 			continue;
-		date = line.substr(0, div);
-		rate = std::atof(line.substr(div + 1, line.npos).c_str());
+		date = strSplit(line.substr(0, div));
+		if (!validDate(date))
+			continue;
+		rate = std::atof(strSplit(line.substr(div + 1)).c_str());
 		_db[date] = rate;
 	}
+	if (_db.empty())
+		throw std::runtime_error("Error: database is empty.");
+}
+
+bool	BitcoinExchange::findRate(const std::string &date, double &rate) {
+	std::map<std::string, double>::iterator it = _db.lower_bound(date);
+	if (it != _db.end() && it->first == date) {
+		rate = it->second;
+		return true;
+	}
+	if (it == _db.begin())
+		return false;
+	--it;
+	rate = it->second;
+	return true;
+}
+
+void	BitcoinExchange::processLine(const std::string &line) {
+	size_t div = line.find('|');
+	if (div == std::string::npos) {
+		printBadInput(line);
+		return;
+	}
+	std::string date = strSplit(line.substr(0, div));
+	std::string valStr = strSplit(line.substr(div + 1));
+	if (!validDate(date)) {
+		if (date.empty())
+			printBadInput(line);
+		else
+			printBadInput(date);
+		return;
+	}
+	double value = 0;
+	if (!parseValue(valStr, value)) {
+		printBadInput(date);
+		return;
+	}
+	if (value < 0) {
+		std::cout << "Error: not a positive number." << std::endl;
+		return;
+	}
+	if (value > 1000) {
+		std::cout << "Error: too large a number." << std::endl;
+		return;
+	}
+	double rate = 0;
+	if (!findRate(date, rate)) {
+		printBadInput(date);
+		return;
+	}
+	std::cout << date << " => " << value << " = " << value * rate << std::endl;
 }
 
 void	BitcoinExchange::parseFile(std::string file) {
 	if (file.empty())
-		return ;
-	std::ifstream	stream(file);
-	if (!stream) {
-		std::cerr << "Couldn't open file\n";
-		return;
-	}
-	std::string line;
-	std::string		date;
-	float			value;
-	size_t		div;
+		throw std::runtime_error("Error: could not open file.");
+	std::ifstream	stream(file.c_str());
+	if (!stream)
+		throw std::runtime_error("Error: could not open file.");
+	std::string		line;
+	bool			firstLine = true;
 
 	while (std::getline(stream, line)) {
 		if (line.empty())
 			continue;
-		div = line.find(',');
-		date = line.substr(0, div);
-		value = std::atof(line.substr(div + 1, line.npos).c_str());
-		_inputFile[date] = value;
-	}
-}
-
-void	BitcoinExchange::printBitcoin() {
-	std::map<std::string, float>::iterator it;
-
-	for (it = _inputFile.begin(); it != _inputFile.end(); it++) {
-		std::string date = it->first;
-		if (validDate(date) == true)
-			std::cout << it->first << " => " << it->second << std::endl;
-		else
-			std::cerr << "Invalid date\n";
+		if (firstLine && strSplit(line) == "date | value") {
+			firstLine = false;
+			continue;
+		}
+		firstLine = false;
+		processLine(line);
 	}
 }
