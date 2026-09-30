@@ -18,7 +18,7 @@ int	doOp(char op, int a, int b) {
 				std::cerr << "Can't divide by 0\n";
 				return 1;
 			}
-			else return b / a;
+			else return a / b;
 		}
 	return 0;
 }
