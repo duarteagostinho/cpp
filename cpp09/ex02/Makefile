@@ -1,7 +1,7 @@
 NAME = PmergeMe
 SRC = main.cpp PmergeMe.cpp
 OBJS = $(SRC:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -Iinc/
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
 
@@ -20,4 +20,4 @@ fclean: clean
 
 re: fclean all
 
-PHONY: all clean fclean re
+.PHONY: all clean fclean re

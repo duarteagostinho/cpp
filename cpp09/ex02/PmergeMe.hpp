@@ -2,23 +2,32 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <deque>
+# include <vector>
 # include <string>
+# include <algorithm>
+# include <ctime>
+# include <sys/time.h>
+# include <cstdlib>
+# include <cctype>
+# include <climits>
 
-class PMergeMe {
+class PmergeMe {
     public:
         // Constructors & Destructor
-        PMergeMe();                                  // Default
-        PMergeMe(const PMergeMe &src);            // Copy
-        ~PMergeMe();                                 // Destructor
+        PmergeMe();                                  // Default
+        PmergeMe(const PmergeMe &src);            // Copy
+        ~PmergeMe();                                 // Destructor
 
         // Operators
-        PMergeMe &operator=(const PMergeMe &src); // Copy Assignment
+        PmergeMe &operator=(const PmergeMe &src); // Copy Assignment
 
-    private:
-        // Attributes go here
+    	static void sortVector(std::vector<int> &vec);
+		static void sortDeque(std::deque<int> &deq);
+		static std::vector<size_t> jacobsthal(size_t n);
 };
 
 // Stream Operator Overload
-std::ostream &operator<<(std::ostream &o, const PMergeMe &i);
+std::ostream &operator<<(std::ostream &o, const PmergeMe &i);
 
 #endif
