@@ -103,6 +103,8 @@ static void printBadInput(const std::string &s) {
 static bool parseValue(const std::string &s, double &out) {
 	if (s.empty())
 		return false;
+	if (s == "nan" || s == "nanf" || s == "inf" || s == "inff")
+			return false;
 	char *end = NULL;
 	double v = std::strtod(s.c_str(), &end);
 	if (end == s.c_str())
