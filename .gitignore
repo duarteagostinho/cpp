@@ -1,4 +1,5 @@
 *.o
+*.md
 # 42 compiled binaries - NAME from Makefiles
 megaphone
 PhoneBook

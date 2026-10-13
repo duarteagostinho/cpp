@@ -14,20 +14,47 @@
 
 class PmergeMe {
     public:
-        // Constructors & Destructor
-        PmergeMe();                                  // Default
-        PmergeMe(const PmergeMe &src);            // Copy
-        ~PmergeMe();                                 // Destructor
+        PmergeMe();
+        PmergeMe(const PmergeMe &src);
+        ~PmergeMe();
+        PmergeMe &operator=(const PmergeMe &src);
 
-        // Operators
-        PmergeMe &operator=(const PmergeMe &src); // Copy Assignment
+        static void sortVector(std::vector<int> &vec);
+        static void sortDeque(std::deque<int> &deq);
 
-    	static void sortVector(std::vector<int> &vec);
-		static void sortDeque(std::deque<int> &deq);
-		static std::vector<size_t> jacobsthal(size_t n);
+    private:
+        struct VectorItem {
+            int value;
+            size_t id;
+        };
+
+        struct VectorPair {
+            VectorItem small;
+            VectorItem large;
+        };
+
+        struct DequeItem {
+            int value;
+            size_t id;
+        };
+
+        struct DequePair {
+            DequeItem small;
+            DequeItem large;
+        };
+
+        static void fordJohnsonVector(std::vector<VectorItem> &items);
+        static size_t findVectorItem(const std::vector<VectorItem> &chain, size_t id);
+        static void insertVector(std::vector<VectorItem> &chain,
+                                 const VectorItem &item, size_t high);
+        static std::vector<size_t> jacobsthal(size_t count);
+
+        static void fordJohnsonDeque(std::deque<DequeItem> &items);
+        static size_t findDequeItem(const std::deque<DequeItem> &chain, size_t id);
+        static void insertDeque(std::deque<DequeItem> &chain,
+                                const DequeItem &item, size_t high);
 };
 
-// Stream Operator Overload
 std::ostream &operator<<(std::ostream &o, const PmergeMe &i);
 
 #endif
